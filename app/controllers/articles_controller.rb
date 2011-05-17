@@ -6,9 +6,9 @@ class ArticlesController < ApplicationController
 
   def show
     @author = Author.find params[:author_id]
-    @articles = @author.articles.find params[:id]
-    @comments = @articles.comments
-    @comment_new = @articles.comments.new
+    @article = @author.articles.find params[:id]
+    @comments = @article.comments
+    @comment_new = @article.comments.new
   end
 
   def new

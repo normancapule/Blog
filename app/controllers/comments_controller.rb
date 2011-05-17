@@ -3,12 +3,15 @@ class CommentsController < ApplicationController
   def create
     @author = Author.find params[:author_id]
     @article = @author.articles.find params[:article_id]
-    @comments = @article.comments.build
-    @comments.email = params[:email]
-    @comments.body = params[:body]
-    @comments.comment_date = Time.now
-    @comments.save
-    redirect_to author_article_path(@author, @article)
+    @comment = @article.comments.build( :email       => params[:email], 
+                                        :body        => params[:body], 
+                                        :comment_date=> Time.now)
+    @comment.save
+    respond_to do |format| #for ajax
+      format.html { #tells the request that it is an html
+        redirect_to author_article_path(@author, @article)}
+        format.js #communicates with comments/create.js.erb (js because of this Processing by CommentsController#create as JS in the logs
+    end
   end
 
   def edit
