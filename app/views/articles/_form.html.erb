@@ -1,0 +1,29 @@
+<%= form_for [@author,@articles] do |f| %>
+  <% if @articles.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@articles.errors.count, "error") %> prohibited this article from being saved:</h2>
+      <ul>
+      <% @articles.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p> Author: <%= @author.last_name %>, <%= @author.first_name %> </p>
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :body %><br />
+    <%= f.text_area  :body %>
+  </div>
+  <div class="field">
+    <%= f.label :status %><br />
+    <%= f.select :status, ["Draft", "Posted"] %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Save" %>
+  </div>
+<% end %>

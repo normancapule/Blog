@@ -1,0 +1,20 @@
+<p>
+  <strong>First Name:</strong>
+  <%= @authors.first_name %>
+</p>
+<p>
+  <strong>Last Name:</strong>
+  <%= @authors.last_name %>
+</p>
+<p>
+  <strong>Remarks:</strong>
+  <%= @authors.remarks %>
+</p>
+<p>
+  <strong>Birthday:</strong>
+  <%= @authors.birthday %>
+</p>
+
+<%= link_to 'Show articles', author_articles_path(@authors) %> |
+<%= link_to 'Edit', edit_author_path(@authors) %> |
+<%= link_to 'Back', authors_path %>

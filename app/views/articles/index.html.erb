@@ -1,0 +1,20 @@
+<%= flash[:notice] %>
+<h1>Listing Articles wrote by <%= @author.last_name %>, <%= @author.first_name %></h1>
+
+<table border="1">
+<% @articles.each do |article| %>
+  <tr>
+    <td><%= article.title %></td>
+    <td><%= article.body %></td>
+    <td><%= article.status %></td>
+    <td><%= article.date_posted %></td>
+    <td><%= link_to 'Show', author_article_path(@author, article) %></td>
+    <td><%= link_to 'Edit', edit_author_article_path(@author, article) %></td>
+    <td><%= link_to 'Destroy', author_article_path(@author, article), :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+<br />
+
+<%= link_to 'New Article', new_author_article_path(@author) %>
+<%= link_to 'Back to my author', author_path(@author) %>

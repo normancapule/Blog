@@ -1,0 +1,47 @@
+<h1> Owned by <%= @author.last_name %>, <%= @author.first_name %> </h1>
+<p>
+  <strong>Title:</strong>
+  <%= @articles.title %>
+</p>
+<p>
+  <strong>Body:</strong>
+  <%= @articles.body %>
+</p>
+<p>
+  <strong>Status:</strong>
+  <%= @articles.status %>
+</p>
+<p>
+  <strong>Date Posted:</strong>
+  <%= @articles.date_posted %>
+</p>
+
+<%= link_to 'Back', author_articles_path(@author) %>
+
+<h1> Comments </h1>
+
+<%= form_tag author_article_comments_path(@author, @articles, @comment_new) ,:method=>"Post"%>
+
+  <div class="field">
+    <%= label_tag :email %><br />
+    <%= text_field_tag :email %>
+  </div>
+  <div class="field">
+    <%= label_tag :body %><br />
+    <%= text_area_tag :body %>
+  </div>
+  <div class="actions">
+    <%= submit_tag "Save" %>
+  </div>
+
+<% @comments.each do |c| %>
+<p>
+-------------<br>
+  <strong>Email:</strong> <%= c.email %><br>
+  <strong>Body:</strong> <%=c.body%><br>
+  <strong>Comment Date:</strong> <%=c.comment_date%><br>
+<%= link_to 'Edit', edit_author_article_comment_path(@author, @articles, c) %><br>
+<%= link_to 'Destroy', author_article_comment_path(@author, @articles, c), :confirm => 'Are you sure?', :method => :delete %><br>
+-------------<br>
+</p>
+<%end%>

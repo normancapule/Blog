@@ -1,0 +1,12 @@
+<%@posts.each do |post_me|%>
+  <p>
+    <b>Subject:</b>
+    <%= post_me.subject %>
+  </p>
+  <p>
+    <b>Content:</b>
+    <%= post_me.content %>
+  </p>
+<%= link_to 'Edit', edit_post_path(post_me.id) %>
+<%end%><br><br>
+<%= link_to 'Back', posts_path %>
