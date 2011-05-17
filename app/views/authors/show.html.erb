@@ -15,6 +15,10 @@
   <%= @authors.birthday %>
 </p>
 
+<%= image_tag @authors.avatar.url(:medium) %>
+<%= image_tag @authors.avatar.url(:thumb) %>
+<%= image_tag @authors.avatar.url(:original) %>
+
 <%= link_to 'Show articles', author_articles_path(@authors) %> |
 <%= link_to 'Edit', edit_author_path(@authors) %> |
 <%= link_to 'Back', authors_path %>
