@@ -11,5 +11,8 @@ Blog::Application.routes.draw do
     resources :articles do
       resources :comments
     end
-  end  
+  end
+
+  root :to=>'authors#index'
+ 
 end

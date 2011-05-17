@@ -10,4 +10,11 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+  def image_file
+    File.new(File.expand_path('test/fixtures/files/00.jpg', Rails.root), 'r')
+  end
+
+  def invalid_image_file
+    File.new(File.expand_path('test/fixtures/files/invalid.jpg', Rails.root), 'r')
+  end
 end

@@ -42,6 +42,7 @@ class ArticleTest < ActiveSupport::TestCase
   test "date_posted_should_be_filled_if_status_is_POSTED" do
     article = Article.new :title => "x1", :body=>"x1", :status=>"Posted"
     assert article.valid?
+    article.save
     assert_not_nil article.date_posted   
   end
 
@@ -52,7 +53,7 @@ class ArticleTest < ActiveSupport::TestCase
   end
 
   test "belong_to_author" do
-    author = Author.new :first_name=>"hehe", :last_name=>"hoho"
+    author = Author.new :first_name=>"hehe", :last_name=>"hoho", :avatar => image_file
     article = Article.new :title => "x1", :body=>"x1", :status=>"Draft"
     assert_respond_to article, :author, "article has no relation to author"
     article.author = author
