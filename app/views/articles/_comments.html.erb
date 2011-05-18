@@ -5,7 +5,7 @@
   <strong>Body:</strong> <%=c.body%><br>
   <strong>Comment Date:</strong> <%=c.comment_date%><br>
 <%= link_to 'Edit', edit_author_article_comment_path(@author, @article, c) %><br>
-<%= link_to 'Destroy', author_article_comment_path(@author, @article, c), :confirm => 'Are you sure?', :method => :delete %><br>
+<%= link_to 'Destroy', author_article_comment_path(@author, @article, c), :confirm => 'Are you sure?', :method => :delete, :remote => true %><br>
 -------------<br>
 </p>
 <%end%>

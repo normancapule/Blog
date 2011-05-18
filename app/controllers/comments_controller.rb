@@ -10,7 +10,7 @@ class CommentsController < ApplicationController
     respond_to do |format| #for ajax
       format.html { #tells the request that it is an html
         redirect_to author_article_path(@author, @article)}
-        format.js #communicates with comments/create.js.erb (js because of this Processing by CommentsController#create as JS in the logs
+        format.js #communicates with comments/create.rjs (js because of this Processing by CommentsController#create as JS in the logs
     end
   end
 
@@ -36,6 +36,10 @@ class CommentsController < ApplicationController
     @article = @author.articles.find params[:article_id]
     @comment = @article.comments.find params[:id]
     @comment.destroy
-      redirect_to author_article_path(@author, @article)
+    respond_to do |format| #for ajax
+      format.html { #tells the request that it is an html
+        redirect_to author_article_path(@author, @article)}
+        format.js #communicates with comments/destroy.rjs (js because of this Processing by CommentsController#destroy as JS in the logs
+    end
   end
 end
